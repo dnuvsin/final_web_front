@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.css";
+import SignInSide from "./page/SignInSide";
+import ResponsiveAppBar from "./component/ResponsiveAppBar";
+import Homepage from "./page/Homepage";
+import Qoutes from "./Qoutes";
+import PhotoGallery from "./page/AllTour";
+import SignUp from "./page/SignUp";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <BrowserRouter>
+        <ResponsiveAppBar />
+        <hr />
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/signin" element={<SignInSide />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/ทัวร์ทั้งหมด" element={<PhotoGallery />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
