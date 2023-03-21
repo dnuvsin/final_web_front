@@ -13,17 +13,32 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import MyFooter from "../component/MyFooter";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const theme = createTheme();
 
 export default function SignInSide() {
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
+    const formData = {
       email: data.get("email"),
       password: data.get("password"),
-    });
+    };
+    axios
+      .post("http://localhost:5001/login", formData)
+      .then((response) => {
+        console.log(response.data.token);
+        // handle successful login, e.g. store token in local storage
+        navigate("/"); // redirect to homepage
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+        // handle failed login, e.g. show error message to user
+      });
   };
 
   return (

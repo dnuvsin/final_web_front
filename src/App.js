@@ -6,6 +6,8 @@ import Homepage from "./page/Homepage";
 import Qoutes from "./Qoutes";
 import PhotoGallery from "./page/AllTour";
 import SignUp from "./page/SignUp";
+import ContactUs from "./page/ContactUs";
+import LoginPage from "./page/LoginPage";
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
           <Route path="/signin" element={<SignInSide />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/ทัวร์ทั้งหมด" element={<PhotoGallery />} />
+          <Route path="/ติดต่อเรา" element={<ContactUs />} />
         </Routes>
       </BrowserRouter>
     </div>

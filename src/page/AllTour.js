@@ -6,6 +6,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,21 +38,27 @@ function PhotoGallery() {
       <Grid container spacing={2} justifyContent="center" alignItems="center">
         {photos.map((photo) => (
           <Grid item xs={12} sm={6} md={4} key={photo.id}>
-            <Card className={classes.card}>
-              <CardMedia
-                className={classes.media}
-                image={photo.image_url}
-                title={photo.title}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  {photo.title}
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  {photo.description}
-                </Typography>
-              </CardContent>
-            </Card>
+            {/* <Link to={`/photos/${photo.id}`} style={{ textDecoration: "none" }}> */}
+              <Card className={classes.card}>
+                <CardMedia
+                  className={classes.media}
+                  image={photo.image_url}
+                  title={photo.title}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {photo.title}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    {photo.description}
+                  </Typography>
+                </CardContent>
+              </Card>
+            {/* </Link> */}
           </Grid>
         ))}
       </Grid>

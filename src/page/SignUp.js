@@ -13,11 +13,12 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import MyFooter from "../component/MyFooter";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const theme = createTheme();
 
 export default function SignUp() {
+  const navigate = useNavigate();
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -38,7 +39,7 @@ export default function SignUp() {
     const result = await response.json();
     console.log(result);
 
-    History.push("/");
+    navigate("/");
   };
 
   return (
