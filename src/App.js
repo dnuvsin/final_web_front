@@ -8,6 +8,9 @@ import PhotoGallery from "./page/AllTour";
 import SignUp from "./page/SignUp";
 import ContactUs from "./page/ContactUs";
 import LoginPage from "./page/LoginPage";
+import ShowUsers from "./page/ShowUsers";
+import DataTable from "./page/AllReserve";
+import AllUsers from "./page/AllUsers";
 
 function App() {
   return (
@@ -21,6 +24,8 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/ทัวร์ทั้งหมด" element={<PhotoGallery />} />
           <Route path="/ติดต่อเรา" element={<ContactUs />} />
+          <Route path="/shoeuser" element={<ShowUsers />} />
+          <Route path="/allusers" element={<AllUsers />} />
         </Routes>
       </BrowserRouter>
     </div>

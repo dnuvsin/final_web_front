@@ -38,7 +38,10 @@ function PhotoGallery() {
       <Grid container spacing={2} justifyContent="center" alignItems="center">
         {photos.map((photo) => (
           <Grid item xs={12} sm={6} md={4} key={photo.id}>
-            {/* <Link to={`/photos/${photo.id}`} style={{ textDecoration: "none" }}> */}
+            <Link
+              to={`/ทัวร์ทั้งหมด/${photo.title}`}
+              style={{ textDecoration: "none" }}
+            >
               <Card className={classes.card}>
                 <CardMedia
                   className={classes.media}
@@ -58,7 +61,7 @@ function PhotoGallery() {
                   </Typography>
                 </CardContent>
               </Card>
-            {/* </Link> */}
+            </Link>
           </Grid>
         ))}
       </Grid>
