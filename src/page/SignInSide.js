@@ -29,11 +29,12 @@ export default function SignInSide() {
       password: data.get("password"),
     };
     axios
-      .post("http://localhost:5001/login", formData)
+      .post("http://localhost:5001/test_login", formData)
       .then((response) => {
         console.log(response.data.token);
         // handle successful login, e.g. store token in local storage
-        navigate("/"); // redirect to homepage
+        // navigate("/"); // redirect to homepage
+        <Link href="/" />;
       })
       .catch((error) => {
         console.log(error.response.data);
@@ -124,7 +125,7 @@ export default function SignInSide() {
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="#" variant="body2">
+                  <Link href="/signup" variant="body2">
                     {"Don't have an account? Sign Up"}
                   </Link>
                 </Grid>

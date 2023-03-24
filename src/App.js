@@ -24,7 +24,6 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/ทัวร์ทั้งหมด" element={<PhotoGallery />} />
           <Route path="/ติดต่อเรา" element={<ContactUs />} />
-          <Route path="/shoeuser" element={<ShowUsers />} />
           <Route path="/allusers" element={<AllUsers />} />
         </Routes>
       </BrowserRouter>

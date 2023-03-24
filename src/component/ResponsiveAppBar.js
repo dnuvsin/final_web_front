@@ -6,7 +6,7 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import LandscapeIcon from "@mui/icons-material/Landscape";
 import { Link } from "react-router-dom";
-import LockOpenIcon from "@mui/icons-material/LockOpen";
+import { useNavigate } from "react-router-dom";
 import {
   Avatar,
   Box,
@@ -24,6 +24,7 @@ function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -44,6 +45,7 @@ function ResponsiveAppBar() {
     } else {
       // handle login logic here
       setIsLoggedIn(true);
+      navigate("/signin");
     }
     handleCloseUserMenu();
   };
@@ -145,16 +147,22 @@ function ResponsiveAppBar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton
+            {isLoggedIn ? (
+              <MenuItem onClick={handleUserAction}>Logout</MenuItem>
+            ) : (
+              <MenuItem onClick={handleUserAction}>Login</MenuItem>
+            )}
+            {/* <Tooltip title="Open settings">
+              <button>Login</button>
+              {/* <IconButton
                 aria-label="user setting"
                 onClick={handleOpenUserMenu}
                 sx={{ p: 0 }}
               >
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
+              </IconButton> */}
+            {/* </Tooltip> */} */}
+            {/* <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
@@ -175,7 +183,7 @@ function ResponsiveAppBar() {
               ) : (
                 <MenuItem onClick={handleUserAction}>Login</MenuItem>
               )}
-            </Menu>
+            </Menu> */}
           </Box>
         </Toolbar>
       </Container>
