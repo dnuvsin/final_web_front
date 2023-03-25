@@ -4,7 +4,7 @@ import { Button, CircularProgress } from "@material-ui/core";
 import axios from "axios";
 
 export default function AdminContact() {
-  const [data, setDatas] = useState([]);
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const columns = [
@@ -31,17 +31,30 @@ export default function AdminContact() {
   ];
 
   const handleDelete = (id) => {
-    setLoading(true);
-    axios.delete(`http://localhost:5001/users/${id}`).then(() => {
-      setDatas(data.filter((data) => data.id !== id));
-      setLoading(false);
-    });
+    if (window.confirm("Are you sure you want to delete this record?")) {
+      setLoading(true);
+      axios
+        .delete(`http://localhost:5001/users/${id}`)
+        .then(() => {
+          setData((prevData) => prevData.filter((d) => d.id !== id));
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.error(error);
+          setLoading(false);
+        });
+    }
   };
 
   useEffect(() => {
-    axios.get("http://localhost:5001/contact").then((response) => {
-      setDatas(response.data);
-    });
+    axios
+      .get("http://localhost:5001/contact")
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, []);
 
   return (
