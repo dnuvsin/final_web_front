@@ -13,7 +13,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import MyFooter from "../component/MyFooter";
-import { useNavigate, Router } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const theme = createTheme();
 

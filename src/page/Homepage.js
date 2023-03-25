@@ -12,8 +12,34 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import MyFooter from "../component/MyFooter";
+import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 
-const cards = [1, 2, 3];
+const cardData = [
+  {
+    id: 1,
+    title: "โปรแกรมทัวร์ 4 เกาะ ทะเลแหวก เรือหางยาว",
+    description:
+      "ทัวร์กระบี่วันเดียวเที่ยว 4 เกาะ เที่ยวทะเลแหวก เกาะปอดะ เกาะไก่ ถ้ำพระนาง หาดไร่เลย์",
+    imageUrl:
+      "https://www.pmandamantour.com/uploads/package/pictures/pic-602139717683.jpg",
+  },
+  {
+    id: 2,
+    title: "โปรแกรมทัวร์ สระมรกต น้ำตกร้อน วัดถ้ำเสือ",
+    description:
+      "เที่ยวเมืองกระบี่ แช่น้ำตกร้อน เล่นน้ำที่สระมรกต แวะวัดถ้ำเสือ",
+    imageUrl:
+      "https://www.krabiteerapongtour.com/uploads/package/album/pic-361246118608.jpg",
+  },
+  {
+    id: 3,
+    title: "ทัวร์พายเรือคายัค อ่าวท่าเลน ครึ่งวัน กระบี่",
+    description:
+      "ทัวร์กระบี่ พายเรือแคนู/คายัคครึ่งวัน ชมความงามของธรรมชาติ ทะเล ภูเขาหินปูนและป่าชายเลนที่อุดมสมบูรณ์",
+    imageUrl:
+      "https://www.krabiteerapongtour.com/uploads/package/album/pic-622701866895.jpg",
+  },
+];
 
 const theme = createTheme();
 
@@ -57,16 +83,20 @@ export default function Homepage() {
               spacing={2}
               justifyContent="center"
             >
-              <Button variant="contained">Main call to action</Button>
-              <Button variant="outlined">Secondary action</Button>
+              <Button variant="contained" href="ทัวร์ทั้งหมด">
+                ดูทัวร์ทั้งหมด
+              </Button>
+              <Button variant="outlined" href="ติดต่อเรา">
+                ติดต่อเรา
+              </Button>
             </Stack>
           </Container>
         </Box>
         <Container sx={{ py: 8 }} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
+            {cardData.map((card) => (
+              <Grid item key={card.id} xs={12} sm={6} md={4}>
                 <Card
                   sx={{
                     height: "100%",
@@ -76,25 +106,23 @@ export default function Homepage() {
                 >
                   <CardMedia
                     component="img"
-                    sx={{
-                      // 16:9
-                      pt: "56.25%",
-                    }}
-                    image="https://source.unsplash.com/random"
-                    alt="random"
+                    image={card.imageUrl}
+                    alt={card.title}
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Heading
+                      {card.title}
                     </Typography>
-                    <Typography>
-                      This is a media card. You can use this section to describe
-                      the content.
-                    </Typography>
+                    <Typography>{card.description}</Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small">View</Button>
-                    <Button size="small">Edit</Button>
+                    <Button
+                      size="small"
+                      component={Link}
+                      to={`/ทัวร์ทั้งหมด/${card.id}`}
+                    >
+                      ดูรายละเอียด
+                    </Button>
                   </CardActions>
                 </Card>
               </Grid>

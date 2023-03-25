@@ -15,31 +15,42 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import MyFooter from "../component/MyFooter";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const theme = createTheme();
 
 export default function SignInSide() {
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    rememberMe: false,
+  });
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const formData = {
-      email: data.get("email"),
-      password: data.get("password"),
-    };
+    console.log("Submitting form...");
+    console.log(formData);
     axios
       .post("http://localhost:5001/test_login", formData)
       .then((response) => {
-        console.log(response.data.token);
-        // handle successful login, e.g. store token in local storage
-        // navigate("/"); // redirect to homepage
-        <Link href="/" />;
+        // handle successful login
+        navigate("/");
+        console.log("Navigating to homepage...");
       })
       .catch((error) => {
-        console.log(error.response.data);
-        // handle failed login, e.g. show error message to user
+        console.log(error);
+        // handle failed login
       });
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value, type, checked } = event.target;
+    console.log(`Updating ${name} field to ${value}`);
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: type === "checkbox" ? checked : value,
+    }));
   };
 
   return (
@@ -95,6 +106,8 @@ export default function SignInSide() {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                value={formData.email}
+                onChange={handleInputChange}
               />
               <TextField
                 margin="normal"
@@ -105,9 +118,19 @@ export default function SignInSide() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                value={formData.password}
+                onChange={handleInputChange}
               />
               <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
+                control={
+                  <Checkbox
+                    checked={formData.rememberMe}
+                    onChange={handleInputChange}
+                    name="rememberMe"
+                    value={formData.rememberMe}
+                    color="primary"
+                  />
+                }
                 label="Remember me"
               />
               <Button
