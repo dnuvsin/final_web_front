@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { useState } from "react";
+import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,12 +24,27 @@ const useStyles = makeStyles((theme) => ({
 function ContactUs() {
   const classes = useStyles();
   const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // send form data to server or external service here
+    axios
+      .post("/api/contact", {
+        name: name,
+        phone: phone,
+        email: email,
+        message: message,
+      })
+      .then((response) => {
+        console.log("Form submitted successfully");
+        // Add any additional success logic here
+      })
+      .catch((error) => {
+        console.error("Error submitting form:", error);
+        // Add any error handling logic here
+      });
   };
 
   return (
@@ -39,6 +55,14 @@ function ContactUs() {
         label="Name"
         value={name}
         onChange={(event) => setName(event.target.value)}
+      />
+      <TextField
+        required
+        id="phone"
+        label="Phone"
+        type="phone"
+        value={phone}
+        onChange={(event) => setPhone(event.target.value)}
       />
       <TextField
         required

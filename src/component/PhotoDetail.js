@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./PhotoDetail.css";
+import { Box } from "@mui/system";
 
 function PhotoDetail({ match }) {
   const [photo, setPhoto] = useState(null);
@@ -17,14 +18,16 @@ function PhotoDetail({ match }) {
   }, [match.params.id]);
 
   if (!photo) {
-    return <div className="container">Loading...</div>;
+    return <div>Loading...</div>;
   }
 
   return (
-    <div className="container">
-      <h1>{photo.title}</h1>
-      <img src={photo.image_url} alt={photo.title} />
-      <p>{photo.description}</p>
+    <div>
+      <Box height={700} width={700} border={10}>
+        <h1>{photo.title}</h1>
+        <img src={photo.image_url} alt={photo.title} />
+        <p>{photo.description}</p>
+      </Box>
     </div>
   );
 }

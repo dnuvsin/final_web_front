@@ -13,6 +13,7 @@ import DataTable from "./page/AllReserve";
 import AllUsers from "./page/AllUsers";
 import pro1 from "./mockuptour/pro1";
 import PhotoDetail from "./component/PhotoDetail";
+import Pro4 from "./mockuptour/pro4";
 
 function App() {
   return (
@@ -24,10 +25,10 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/signin" element={<SignInSide />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/ทัวร์ทั้งหมด" element={<PhotoGallery />} />
+          <Route exact path="/ทัวร์ทั้งหมด" element={<PhotoGallery />} />
           <Route path="/ติดต่อเรา" element={<ContactUs />} />
           <Route path="/allusers" element={<AllUsers />} />
-          <Route path="/program" element={<pro1 />} />
+          <Route path="/program" element={<Pro4 />} />
           <Route path="/ทัวร์ทั้งหมด/:id" component={PhotoDetail} />
         </Routes>
       </BrowserRouter>
