@@ -1,13 +1,29 @@
 import React from "react";
-function pro1() {
+import "./me2.css";
+import "./me1.css";
+
+function Pro1() {
   return (
     <div className="container">
       <div className="photos">
         <h1 style={{ position: "relative", height: "700px", width: "700px" }}>
-          ทัวร์ 4 เกาะทะเลแหวก สปีดโบ๊ท
+          ทัวร์ 4 เกาะทะเลแหวก สปีดโบ
         </h1>
-        <image src="./pro1.jpg" alt="Tour photo" />
-        <image src="./pro1.1.jpg" alt="Tour photo" width="50%" />
+        <img
+          src="https://www.pmandamantour.com/uploads/package/album/pic-327266936629.jpg"
+          alt="Tour photo"
+          style={{ width: "100%", height: "700 px" }}
+        />
+        <img
+          src="https://www.pmandamantour.com/uploads/package/album/pic-328045982946.jpg"
+          alt="Tour photo"
+          style={{ width: "50%" }}
+        />
+        <img
+          src="https://www.pmandamantour.com/uploads/package/album/pic-322637646380.jpg"
+          alt="Tour photo"
+          style={{ width: "50%" }}
+        />
       </div>
       <div className="tour-details">
         <h1>รายละเอียดทัวร์</h1>
@@ -114,4 +130,4 @@ function pro1() {
   );
 }
 
-export default pro1;
+export default Pro1;

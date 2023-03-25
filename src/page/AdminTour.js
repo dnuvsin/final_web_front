@@ -3,6 +3,42 @@ import { DataGrid } from "@mui/x-data-grid";
 import { Button, CircularProgress } from "@material-ui/core";
 import axios from "axios";
 
+const DeleteButton = ({ id, onDelete }) => {
+  const [loading, setLoading] = useState(false);
+
+  const handleDelete = () => {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this photo?"
+    );
+    if (confirmed) {
+      setLoading(true);
+      axios.delete(`http://localhost:5001/api/photos/${id}`).then(() => {
+        onDelete(id);
+        setLoading(false);
+      });
+    }
+  };
+
+  return (
+    <Button
+      variant="contained"
+      color="secondary"
+      onClick={handleDelete}
+      disabled={loading}
+    >
+      {loading ? <CircularProgress size={24} /> : "Delete"}
+    </Button>
+  );
+};
+
+const EditButton = ({ id, onEdit }) => {
+  return (
+    <Button variant="contained" color="secondary" onClick={() => onEdit(id)}>
+      Edit
+    </Button>
+  );
+};
+
 export default function AdminTour() {
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -10,20 +46,14 @@ export default function AdminTour() {
   const columns = [
     { field: "id", headerName: "ID", width: 100 },
     { field: "title", headerName: "ชื่อทัวร์", width: 300 },
-    { field: "desccription", headerName: "รายละเอียดของทัวร์", width: 300 },
+    { field: "description", headerName: "รายละเอียดของทัวร์", width: 300 },
     { field: "image_url", headerName: "รูป", width: 300 },
     {
       field: "edit",
-      headerName: "edit",
+      headerName: "Edit",
       width: 100,
       renderCell: (params) => (
-        <Button
-          variant="contained"
-          color="secondary"
-          onClick={() => handleEdit(params.row.id)}
-        >
-          Edit
-        </Button>
+        <EditButton id={params.row.id} onEdit={handleEdit} />
       ),
     },
     {
@@ -31,31 +61,32 @@ export default function AdminTour() {
       headerName: "Delete",
       width: 100,
       renderCell: (params) => (
-        <Button
-          variant="contained"
-          color="secondary"
-          onClick={() => handleDelete(params.row.id)}
-        >
-          Delete
-        </Button>
+        <DeleteButton id={params.row.id} onDelete={handleDelete} />
       ),
     },
   ];
 
   const handleDelete = (id) => {
-    setLoading(true);
-    axios.delete(`http://localhost:5001/api/photos/${id}`).then(() => {
-      setPhotos(photos.filter((photo) => photo.id !== id));
-      setLoading(false);
-    });
+    setPhotos(photos.filter((photo) => photo.id !== id));
   };
 
-  const handleEdit = (id) => {};
+  const handleEdit = (id) => {
+    // TODO: create edit component and pass row data as props
+  };
 
   useEffect(() => {
-    axios.get("http://localhost:5001/api/photos").then((response) => {
-      setPhotos(response.data);
-    });
+    setLoading(true);
+    axios
+      .get("http://localhost:5001/api/photos")
+      .then((response) => {
+        setPhotos(response.data);
+      })
+      .catch((error) => {
+        // TODO: display error to user
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
   return (

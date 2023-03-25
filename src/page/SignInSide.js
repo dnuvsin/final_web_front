@@ -34,12 +34,20 @@ export default function SignInSide() {
     axios
       .post("http://localhost:5001/test_login", formData)
       .then((response) => {
+        console.log(response.data);
         // handle successful login
         navigate("/");
         console.log("Navigating to homepage...");
+        axios.post("http://localhost:5001/get_name", formData).then((res) => {
+          window.confirm(`Login successful. Welcome ${res.data}!`);
+        });
+
+        //const name = response.data; // assuming the API response contains the user's name
+        //window.confirm(`Login successful. Welcome ${name}!`);
       })
       .catch((error) => {
         console.log(error);
+        window.confirm(`email or password not correct!`);
         // handle failed login
       });
   };

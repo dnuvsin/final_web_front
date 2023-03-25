@@ -57,7 +57,7 @@ function PhotoGallery() {
         style={{ height: "100vh" }}
       >
         {photos.map((photo) => (
-          <Grid item xs={12} sm={6} md={4} key={photo.id}>
+          <Grid item xs={12} sm={6} md={4} key={photo.tour_idid}>
             <Link
               to={`/ทัวร์ทั้งหมด/${photo.id}`}
               style={{ textDecoration: "none" }}

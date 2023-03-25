@@ -7,15 +7,7 @@ import Button from "@mui/material/Button";
 import LandscapeIcon from "@mui/icons-material/Landscape";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import {
-  Avatar,
-  Box,
-  IconButton,
-  Menu,
-  MenuItem,
-  Tooltip,
-  Typography,
-} from "@mui/material";
+import { Box, IconButton, Menu, MenuItem, Typography } from "@mui/material";
 
 const pages = ["หน้าแรก", "ทัวร์ทั้งหมด", "ติดต่อเรา"];
 const settings = ["Account", "History", "Logout"];
