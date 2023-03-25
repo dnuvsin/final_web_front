@@ -42,6 +42,7 @@ function ResponsiveAppBar() {
     if (isLoggedIn) {
       // handle logout logic here
       setIsLoggedIn(false);
+      navigate("/");
     } else {
       // handle login logic here
       setIsLoggedIn(true);
@@ -161,7 +162,7 @@ function ResponsiveAppBar() {
               >
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton> */}
-            {/* </Tooltip> */} */}
+            {/* </Tooltip>  */}
             {/* <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"
