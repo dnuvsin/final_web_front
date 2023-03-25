@@ -27,7 +27,7 @@ export default function ContactUs2() {
     event.preventDefault();
     if (window.confirm("Are you sure you want to submit the form?")) {
       axios
-        .post("/api/contact", {
+        .post("/contact", {
           name: name,
           phone: phone,
           email: email,

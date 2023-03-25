@@ -11,6 +11,7 @@ import ContactUs2 from "./page/ContactUs2";
 import AdminTour from "./page/AdminTour";
 import Pro1 from "./program/Pro1.js";
 import AdminContact from "./page/AllContact";
+import AdminPage from "./page/Admin";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/ติดต่อเรา" element={<ContactUs2 />} />
           <Route path="/program" element={<Pro1 />} />
 
+          <Route path="/admin" element={<AdminPage />} />
           <Route path="/admin/allreserve" element={<AllUsers />} />
           <Route path="/admin/allusers" element={<AllUsers />} />
           <Route path="/admin/tour" element={<AdminTour />} />

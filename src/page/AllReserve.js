@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { Button, CircularProgress } from "@material-ui/core";
 import axios from "axios";
+import Typography from "@material-ui/core";
 
 export default function DataTable() {
   const [users, setUsers] = useState([]);
@@ -53,6 +54,7 @@ export default function DataTable() {
 
   return (
     <div style={{ height: "100vh", width: "100%", paddingTop: 100 }}>
+      <Typography variant="h3">รายการติดต่อ</Typography>
       {loading ? (
         <CircularProgress />
       ) : (

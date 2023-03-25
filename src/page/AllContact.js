@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { Button, CircularProgress } from "@material-ui/core";
 import axios from "axios";
+import { Typography } from "@mui/material";
 
 export default function AdminContact() {
   const [data, setData] = useState([]);
@@ -59,6 +60,7 @@ export default function AdminContact() {
 
   return (
     <div style={{ height: "100vh", width: "100%", paddingTop: 100 }}>
+      <Typography variant="h3">รายการติดต่อ</Typography>
       {loading ? (
         <CircularProgress />
       ) : (
