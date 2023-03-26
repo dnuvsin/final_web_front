@@ -8,7 +8,7 @@ export default function AllUsers() {
   const [loading, setLoading] = useState(false);
 
   const columns = [
-    { field: "id", headerName: "ID", width: 100 },
+    { field: "user_id", headerName: "ID", width: 100 },
     { field: "first_name", headerName: "First name", width: 300 },
     { field: "last_name", headerName: "Last name", width: 300 },
     { field: "email", headerName: "Email", width: 300 },
@@ -59,8 +59,8 @@ export default function AllUsers() {
         <DataGrid
           rows={users}
           columns={columns}
-          pageSize={5}
-          rowsPerPageOptions={[5]}
+          pageSize={10}
+          rowsPerPageOptions={[10]}
           checkboxSelection
         />
       )}

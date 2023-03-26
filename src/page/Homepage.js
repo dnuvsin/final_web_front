@@ -51,7 +51,7 @@ export default function Homepage() {
         {/* Hero unit */}
         <Box
           sx={{
-            bgcolor: "background.paper",
+            bgcolor: "##04BFBF",
             pt: 12,
             pb: 6,
           }}
@@ -130,21 +130,6 @@ export default function Homepage() {
           </Grid>
         </Container>
       </main>
-      {/* Footer */}
-      {/* <Box sx={{ bgcolor: "background.paper", p: 6 }} component="footer">
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="text.secondary"
-          component="p"
-        >
-          Something here to give the footer a purpose!
-        </Typography>
-      </Box> */}
-      {/* End footer */}
       <MyFooter />
     </ThemeProvider>
   );

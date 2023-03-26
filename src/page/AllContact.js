@@ -13,7 +13,7 @@ export default function AdminContact() {
     { field: "date", headerName: "Date", width: 100 },
     { field: "name", headerName: "Name", width: 300 },
     { field: "email", headerName: "Email", width: 300 },
-    { field: "phone", headerName: "Phone", width: 300 },
+    { field: "phone", headerName: "Phone", width: 150 },
     { field: "message", headerName: "Message", width: 300 },
     {
       field: "delete",
@@ -35,7 +35,7 @@ export default function AdminContact() {
     if (window.confirm("Are you sure you want to delete this record?")) {
       setLoading(true);
       axios
-        .delete(`http://localhost:5001/users/${id}`)
+        .delete(`http://localhost:5001/contact/${id}`)
         .then(() => {
           setData((prevData) => prevData.filter((d) => d.id !== id));
           setLoading(false);

@@ -3,6 +3,8 @@ import { DataGrid } from "@mui/x-data-grid";
 import { Button, CircularProgress } from "@material-ui/core";
 import axios from "axios";
 import { Typography } from "@mui/material";
+import { Margin } from "@mui/icons-material";
+import { color } from "@mui/system";
 
 const DeleteButton = ({ id, onDelete }) => {
   const [loading, setLoading] = useState(false);
@@ -93,6 +95,8 @@ export default function AdminTour() {
   return (
     <div style={{ height: "100vh", width: "100%", paddingTop: 100 }}>
       <Typography variant="h3">รายการทัวร์</Typography>
+      <button style={{ float: "right"}}>Add</button>
+
       {loading ? (
         <CircularProgress />
       ) : (

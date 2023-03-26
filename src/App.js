@@ -12,6 +12,9 @@ import AdminTour from "./page/AdminTour";
 import Pro1 from "./program/Pro1.js";
 import AdminContact from "./page/AllContact";
 import AdminPage from "./page/Admin";
+import Page5 from "./font/componants/page5";
+import Page6 from "./font/componants/page6";
+import Page7 from "./font/componants/page7";
 
 function App() {
   return (
@@ -24,7 +27,9 @@ function App() {
           <Route path="/signin" element={<SignInSide />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/ทัวร์ทั้งหมด" element={<PhotoGallery />} />
-          <Route path="/ทัวร์ทั้งหมด/:id" element={<PhotoDetail />} />
+          <Route path="/ทัวร์ทั้งหมด/1" element={<Page5 />} />
+          <Route path="/ทัวร์ทั้งหมด/2" element={<Page6 />} />
+          <Route path="/ทัวร์ทั้งหมด/3" element={<Page7 />} />
           <Route path="/ติดต่อเรา" element={<ContactUs2 />} />
           <Route path="/program" element={<Pro1 />} />
 

@@ -13,6 +13,7 @@ import axios from "axios";
 import MyFooter from "../component/MyFooter";
 // import fahTour from "./src/fahTour.svg";
 import { useNavigate } from "react-router-dom";
+import MessageIcon from "@mui/icons-material/Message";
 
 const theme = createTheme();
 
@@ -55,7 +56,8 @@ export default function ContactUs2() {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: "url(https://source.unsplash.com/random)",
+            backgroundImage:
+              "url(https://careergappers.com/wp-content/uploads/2018/03/Dragon-Crest-Mountain-trail-views-3.jpg)",
             backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
               t.palette.mode === "light"
@@ -76,7 +78,7 @@ export default function ContactUs2() {
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-              {/* <img src={fahTour} alt="fahTour" /> */}
+              <MessageIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
               ติดต่อเรา

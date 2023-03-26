@@ -23,6 +23,12 @@ export default function SignUp() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
+    const shouldProceed = window.confirm("Are you sure you want to sign up?");
+
+    if (!shouldProceed) {
+      return;
+    }
+
     const response = await fetch("http://localhost:5001/signup", {
       method: "POST",
       headers: {

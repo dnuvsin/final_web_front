@@ -5,23 +5,16 @@ import axios from "axios";
 import Typography from "@material-ui/core";
 
 export default function DataTable() {
-  const [users, setUsers] = useState([]);
+  const [reserve, setReserve] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const columns = [
-    { field: "id", headerName: "ID", width: 100 },
-    { field: "first_name", headerName: "First name", width: 300 },
-    { field: "last_name", headerName: "Last name", width: 300 },
-    { field: "email", headerName: "Email", width: 300 },
-    {
-      field: "fullName",
-      headerName: "Full name",
-      description: "This column has a value getter and is not sortable.",
-      sortable: false,
-      width: 300,
-      valueGetter: (params) =>
-        `${params.row.first_name || ""} ${params.row.lastname || ""}`,
-    },
+    { field: "ID", headerName: "ID", width: 100 },
+    { field: "reserve_date", headerName: "reserve_date", width: 300 },
+    { field: "date_of_reserve", headerName: "date_of_reserve", width: 300 },
+    { field: "user_ID", headerName: "user_ID", width: 300 },
+    { field: "tour_id", headerName: "tour_id", width: 300 },
+    { field: "quantity", headerName: "จำนวนคน", width: 300 },
     {
       field: "delete",
       headerName: "Delete",
@@ -39,16 +32,18 @@ export default function DataTable() {
   ];
 
   const handleDelete = (id) => {
-    setLoading(true);
-    axios.delete(`http://localhost:5001/users/${id}`).then(() => {
-      setUsers(users.filter((user) => user.id !== id));
-      setLoading(false);
-    });
+    if (window.confirm("Are you sure you want to delete this item?")) {
+      setLoading(true);
+      axios.delete(`http://localhost:5001/reserve/${id}`).then(() => {
+        setReserve(reserve.filter((reserve) => reserve.id !== id));
+        setLoading(false);
+      });
+    }
   };
 
   useEffect(() => {
-    axios.get("http://localhost:5001/users").then((response) => {
-      setUsers(response.data);
+    axios.get("http://localhost:5001/reserve").then((response) => {
+      setReserve(response.data);
     });
   }, []);
 
@@ -59,7 +54,7 @@ export default function DataTable() {
         <CircularProgress />
       ) : (
         <DataGrid
-          rows={users}
+          rows={reserve}
           columns={columns}
           pageSize={5}
           rowsPerPageOptions={[5]}
